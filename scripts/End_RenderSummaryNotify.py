@@ -12,9 +12,9 @@ asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 注意  : Webhook URL やパスワードを書いたこのファイルを人に渡したり、公開したりしないこと。
 
 仕組み: 終了時スクリプトはジョブごとに 1 回ずつ実行される。毎回、自分のジョブの結果を
-        Fusion のアプリデータ（fusion.SetData）に追記し、WAIT_SEC 秒待ってからレンダーが
-        続いているかを確認する。続いていなければ「自分が最後のジョブ」とみなして、
-        たまった結果をまとめて送り、記録を消す。
+        Fusion のアプリデータ（fusion.SetData）に追記し、キュー全体のレンダーが止まるまで待つ。
+        止まったら、最後に記録したジョブのスクリプトだけが、たまった結果をまとめて送り、
+        記録を消す（別の種類のスクリプトのジョブが混ざっていても、まとめが出る）。
         所要時間は「最初に終わったジョブ」から「最後に終わったジョブ」までの目安。
 """
 import datetime
@@ -41,7 +41,7 @@ SMTP_PASSWORD = "xxxx xxxx xxxx xxxx"  # Gmail はアプリ パスワード
 MAIL_FROM = "you@gmail.com"
 MAIL_TO = ["you@gmail.com"]            # 複数可
 
-WAIT_SEC = 3                           # 最後のジョブか判定する前に待つ秒数
+WAIT_SEC = 3                           # この秒数レンダーが止まっていたら、キューが終わったとみなす
 TIMEOUT_SEC = 20
 # ====================================================================
 
@@ -76,13 +76,14 @@ def load_records():
 
 
 def is_last_job():
-    time.sleep(WAIT_SEC)
-    if current_project().IsRenderingInProgress():
-        return False                                    # 次のジョブがレンダー中 → まだ途中
-    time.sleep(1)
+    # キュー全体のレンダーが止まるまで待つ（WAIT_SEC 秒続けて止まっていれば終わりとみなす）。
+    # 最後のジョブに別の種類のスクリプトが指定されていても、まとめが出るようにするため。
+    idle = 0
+    while idle < WAIT_SEC:
+        time.sleep(1)
+        idle = 0 if current_project().IsRenderingInProgress() else idle + 1
     recs = load_records()
-    # 後から別のジョブが終わっていたら、そちらに任せる
-    return not current_project().IsRenderingInProgress() and recs and recs[-1]["job"] == JOB
+    return bool(recs) and recs[-1]["job"] == JOB       # 最後に記録したジョブだけがまとめる
 
 
 def summarize(recs):

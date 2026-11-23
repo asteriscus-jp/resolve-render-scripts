@@ -13,9 +13,9 @@
 
   仕組み
     終了時スクリプトはジョブごとに 1 回ずつ実行される。毎回、自分のジョブの結果を
-    Fusion のアプリデータ（fu:SetData）に追記し、WAIT_SEC 秒待ってからレンダーが
-    続いているかを確認する。続いていなければ「自分が最後のジョブ」とみなして、
-    たまった結果をまとめて表示し、記録を消す。
+    Fusion のアプリデータ（fu:SetData）に追記し、キュー全体のレンダーが止まるまで待つ。
+    止まったら、最後に記録したジョブのスクリプトだけが、たまった結果をまとめて表示し、
+    記録を消す（別の種類のスクリプトのジョブが混ざっていても、まとめが出る）。
     ※ 所要時間は「最初に終わったジョブ」から「最後に終わったジョブ」までの目安。
        最初のジョブの開始時刻は終了時スクリプトでは分からないため。
 
@@ -30,7 +30,7 @@ local ERRMSG = error  or ""
 
 local OS = jit and jit.os or ""         -- "Windows" / "OSX" / "Linux"
 
-local WAIT_SEC = 3                      -- 最後のジョブか判定する前に待つ秒数
+local WAIT_SEC = 3                      -- この秒数レンダーが止まっていたら、キューが終わったとみなす
 local KEY = "asteriscus.RenderSummary.lua"
 
 -- ===== 通知音の設定 =================================================
@@ -91,10 +91,14 @@ local function last_job_in_log()
     return last and last:match("^([^\t]*)")
 end
 
-sleep(WAIT_SEC)
-if rendering() then return end                    -- 次のジョブがレンダー中 → まだ途中
-sleep(1)
-if rendering() or last_job_in_log() ~= JOB then return end   -- 後から別のジョブが終わっていた
+-- キュー全体のレンダーが止まるまで待つ（WAIT_SEC 秒続けて止まっていれば終わりとみなす）。
+-- 最後のジョブに別の種類のスクリプトが指定されていても、まとめが出るようにするため。
+local idle = 0
+while idle < WAIT_SEC do
+    sleep(1)
+    idle = rendering() and 0 or idle + 1
+end
+if last_job_in_log() ~= JOB then return end       -- 最後に記録したジョブだけがまとめる
 
 local log = fu:GetData(KEY) or ""
 fu:SetData(KEY, nil)                              -- 記録を消す（次のレンダーに持ち越さない）
