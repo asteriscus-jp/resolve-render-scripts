@@ -1,6 +1,6 @@
 --[[
   End_RenderSummary.lua  —  キューのレンダーがすべて終わったら、まとめを 1 回だけ表示するサンプル
-  asteriscus (asteriscus.jp)
+  asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
   配置先（このフォルダに置くと「スクリプト」ドロップダウンに出る）
     Windows : %APPDATA%\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts\Deliver

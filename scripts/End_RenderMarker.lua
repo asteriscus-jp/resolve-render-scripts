@@ -1,6 +1,6 @@
 --[[
   End_RenderMarker.lua  -  無償版でも使えるレンダー終了スクリプト
-  asteriscus (asteriscus.jp)
+  asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
   ・ジョブが終わるたびに、結果をコンソールに表示（ワークスペース > コンソール）
   ・すべてのジョブが終わったら

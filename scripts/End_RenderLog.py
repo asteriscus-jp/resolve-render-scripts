@@ -1,6 +1,6 @@
 """
 End_RenderLog.py  —  レンダー結果を CSV に追記するサンプル（Python 版）
-asteriscus (asteriscus.jp)
+asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
 配置先: Fusion/Scripts/Deliver（End_RenderNotify.lua と同じ）
 設定  : デリバー > レンダー設定 > ビデオ > 詳細設定

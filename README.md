@@ -51,6 +51,12 @@ DaVinci Resolve のデリバーページ「レンダー［開始／終了］時�
 - DaVinci Resolve Studio 21.2 Build 6 / DaVinci Resolve 21.2 Build 6（無償版）
 - Windows 11（macOS は未検証）
 
+## 作者
+
+asteriscus
+- Web: https://asteriscus.jp/
+- X: [@asteriscus_jp](https://x.com/asteriscus_jp)
+
 ## ライセンス
 
 [MIT](LICENSE) © asteriscus

@@ -1,6 +1,6 @@
 """
 End_RenderSummaryNotify.py  —  キューのレンダーがすべて終わったら、まとめを 1 通だけ送るサンプル（終了時スクリプト）
-asteriscus (asteriscus.jp)
+asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
 配置先: Fusion/Scripts/Deliver
 設定  : まとめに入れたい「すべてのジョブ」で

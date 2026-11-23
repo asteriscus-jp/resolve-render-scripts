@@ -1,6 +1,6 @@
 --[[
   End_RenderNotify.lua  —  レンダー終了時に結果ダイアログを出すサンプル
-  asteriscus (asteriscus.jp)
+  asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
   配置先（このフォルダに置くと「スクリプト」ドロップダウンに出る）
     Windows : %APPDATA%\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts\Deliver

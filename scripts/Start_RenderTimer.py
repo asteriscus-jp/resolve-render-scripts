@@ -1,6 +1,6 @@
 """
 Start_RenderTimer.py  —  開始時スクリプトでレンダーの処理時間を計るサンプル（Python 版）
-asteriscus (asteriscus.jp)
+asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
 配置先: Fusion/Scripts/Deliver
 設定  : デリバー > レンダー設定 > ビデオ > 詳細設定

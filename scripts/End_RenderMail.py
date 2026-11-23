@@ -1,6 +1,6 @@
 """
 End_RenderMail.py  —  レンダー結果をメールで送るサンプル（終了時スクリプト）
-asteriscus (asteriscus.jp)
+asteriscus  https://asteriscus.jp/  X: @asteriscus_jp
 
 配置先: Fusion/Scripts/Deliver
 設定  : デリバー > レンダー設定 > ビデオ > 詳細設定
