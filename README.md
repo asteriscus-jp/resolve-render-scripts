@@ -8,7 +8,7 @@ DaVinci Resolve のデリバーページ「レンダー［開始／終了］時�
 
 ## 使い方
 
-1. 使いたいスクリプトを次のフォルダに置き、Resolve を再起動する
+1. 使いたいスクリプトを次のフォルダに置く。
    - Windows: `%APPDATA%\Blackmagic Design\DaVinci Resolve\Support\Fusion\Scripts\Deliver`
    - macOS: `~/Library/Application Support/Blackmagic Design/DaVinci Resolve/Fusion/Scripts/Deliver`
 2. デリバーページ > レンダー設定 > 詳細設定 で「レンダー［開始］／［終了］時にスクリプト実行」にチェックし、スクリプトを選ぶ
