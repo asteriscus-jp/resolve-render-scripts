@@ -215,7 +215,7 @@ local win = disp:AddWindow({
     ID = "RenderNotify",
     WindowTitle = "Render Notify",
     WindowFlags = { Window = true, WindowStaysOnTopHint = true },
-    Geometry = { 200, 200, 560, 0 },
+    Geometry = { 200, 200, 560, 110 + #rows * 26 },   -- 高さ 0 だと macOS で中身が描画されない
     ui:VGroup{
         ui:Label{ Text = "<b>" .. (TITLE[STATUS] or STATUS) .. "</b>", Weight = 0 },
         ui:VGroup(body),

@@ -49,7 +49,7 @@ DaVinci Resolve のデリバーページ「レンダー［開始／終了］時�
 ## 動作確認環境
 
 - DaVinci Resolve Studio 21.2 Build 6 / DaVinci Resolve 21.2 Build 6（無償版）
-- Windows 11（macOS は未検証）
+- Windows 11 / macOS 26.6（Apple Silicon）
 
 ## 作者
 
