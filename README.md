@@ -5,7 +5,7 @@ DaVinci Resolve のデリバーページ「レンダー［開始／終了］時�
 - `simple/`：解説記事で説明している簡易版のサンプル
 - `scripts/`：機能を足した完全版（説明なしの作成事例）
 
-解説記事（設定方法・簡易版の説明）: https://asteriscus.jp/
+解説記事（設定方法・簡易版の説明）: https://asteriscus.jp/davinci-resolve/10438/
 
 > 動作は無保証で、個別のサポートは行っていません。
 
